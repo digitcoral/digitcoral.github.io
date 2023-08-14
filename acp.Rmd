@@ -1,3 +1,151 @@
 ---
-title: "PsyCoral"
+title: "Ancient Chinese Poems"
 ---
+
+
+---
+
+### **_I collected famous ancient Chinese poems and mark out the nouns, pronouns, verbs, adjectives, adverbs & quantifiers words, then do the exploration, recombination, maybe re-creation..._**
+#### **_我收集了中国古诗词，标出其中的名词、代词、动词、形容词、副词和量词，做了高频词图_**
+
+```{r settings,echo=FALSE,results='hide',fig.keep='all', message=FALSE,warning=FALSE}
+Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
+library(googlesheets4)
+library(dplyr) #<-- for "select" function
+library("wordcloud")
+```
+
+```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
+
+gs4_deauth() #<--use only for googlesheets shared as 'anyone with the link'
+
+rw_ac_poems <- read_sheet("https://docs.google.com/spreadsheets/d/1aKXxr4WZh0FOCivLzTFdYkcCHaulDlG9jtPpoDEUvo0/edit?usp=sharing", sheet = "Poems")
+#https://docs.google.com/spreadsheets/d/1aKXxr4WZh0FOCivLzTFdYkcCHaulDlG9jtPpoDEUvo0/edit?usp=sharing
+
+#head(rw_ac_poems)
+```
+
+---
+
+### **_The word cloud of the nouns or pronouns used in ancient Chinese poems_**
+#### **_古诗中的名词、代词的高频词_**
+
+```{r dataClean,echo=FALSE, message=FALSE,warning=FALSE}
+
+acp_cl <- rw_ac_poems
+acp_cl$cl_Time <- sapply(strsplit(na.omit(acp_cl$Time)," "), '[', 1)
+
+# ---------- noun part ----------
+
+cols_n <- max(stringr::str_count(na.omit(acp_cl$Noun_Pro),"/")) + 1
+
+colm_n <- paste("col_n",1:cols_n)
+
+acp_cl <-
+  tidyr::separate(
+    data = acp_cl,
+    col = Noun_Pro,
+    sep = "/",
+    into = colm_n,
+    remove = FALSE
+  )
+
+Noun_only <- select(acp_cl,starts_with("col_n"))
+Nouns <- data.frame(Noun_Pro=na.omit(unlist(Noun_only))) #<--attach columns of values into one column
+Nouns$Noun_Pro <- factor(Nouns$Noun_Pro,levels=as.character(names(sort(table(Nouns$Noun_Pro),decreasing=T)))) 
+
+Noun_freq <- as.data.frame(table(Nouns$Noun_Pro))
+
+wordcloud(words=Noun_freq$Var1,freq=Noun_freq$Freq,min.freq=1,
+          max.words=100, random.order=FALSE, rot.per=0.35,
+          colors=brewer.pal(8,'Dark2'))
+```
+
+### **_The word cloud of the verbs used in ancient Chinese poems_**
+#### **_古诗中的动词的高频词_**
+
+```{r verbPart,echo=FALSE, message=FALSE,warning=FALSE}
+# ----------- verb part -----------
+
+cols_v <- max(stringr::str_count(na.omit(acp_cl$Verb),"/")) + 1
+
+colm_v <- paste("col_v",1:cols_v)
+
+acp_cl <-
+  tidyr::separate(
+    data = acp_cl,
+    col = Verb,
+    sep = "/",
+    into = colm_v,
+    remove = FALSE
+  )
+Verb_only <- select(acp_cl,starts_with("col_v"))
+Verbs <- data.frame(Verbs=na.omit(unlist(Verb_only))) #<--attach columns of values into one column
+Verbs$Verb <- factor(Verbs$Verb,levels=as.character(names(sort(table(Verbs$Verb),decreasing=T))))
+
+Verb_freq <- as.data.frame(table(Verbs$Verb))
+
+wordcloud(words=Verb_freq$Var1,freq=Verb_freq$Freq,min.freq=1,
+          max.words=100, random.order=FALSE, rot.per=0.35,
+          colors=brewer.pal(8,'Dark2'))
+```
+
+### **_The word cloud of the adjectives, adverbs used in ancient Chinese poems_**
+#### **_古诗中的形容词、副词的高频词_**
+
+```{r adjPart,echo=FALSE, message=FALSE,warning=FALSE}
+# ------------ adjective part ------------
+
+cols_a <- max(stringr::str_count(na.omit(acp_cl$Adj_Adv),"/")) + 1
+
+colm_a <- paste("col_a",1:cols_a)
+
+acp_cl <-
+  tidyr::separate(
+    data = acp_cl,
+    col = Adj_Adv,
+    sep = "/",
+    into = colm_a,
+    remove = FALSE
+  )
+Adj_only <- select(acp_cl,starts_with("col_a"))
+Adjs <- data.frame(Adjs=na.omit(unlist(Adj_only))) #<--attach columns of values into one column
+Adjs$Adj <- factor(Adjs$Adj,levels=as.character(names(sort(table(Adjs$Adj),decreasing=T))))
+
+Adj_freq <- as.data.frame(table(Adjs$Adj))
+
+wordcloud(words=Adj_freq$Var1,freq=Adj_freq$Freq,min.freq=1,
+          max.words=100, random.order=FALSE, rot.per=0.35,
+          colors=brewer.pal(8,'Dark2'))
+
+```
+
+### **_The word cloud of the quantifiers used in ancient Chinese poems_**
+#### **_古诗中的量词的高频词_**
+
+```{r quantPart,echo=FALSE, message=FALSE,warning=FALSE}
+# ------------ Quantifier part ------------
+
+cols_q <- max(stringr::str_count(na.omit(acp_cl$Quantifier),"/")) + 1
+
+colm_q <- paste("col_q",1:cols_q)
+
+acp_cl <-
+  tidyr::separate(
+    data = acp_cl,
+    col = Quantifier,
+    sep = "/",
+    into = colm_q,
+    remove = FALSE
+  )
+Quant_only <- select(acp_cl,starts_with("col_q"))
+Quants <- data.frame(Quants=na.omit(unlist(Quant_only))) #<--attach columns of values into one column
+Quants$Quant <- factor(Quants$Quant,levels=as.character(names(sort(table(Quants$Quant),decreasing=T))))
+
+Quant_freq <- as.data.frame(table(Quants$Quant))
+
+wordcloud(words=Quant_freq$Var1,freq=Quant_freq$Freq,min.freq=1,
+          max.words=100, random.order=FALSE, rot.per=0.35,
+          colors=brewer.pal(8,'Dark2'))
+
+```
