@@ -12,6 +12,7 @@ title: "Ancient Chinese Poems"
 Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
 library(googlesheets4)
 library(dplyr) #<-- for "select" function
+library(RColorBrewer)
 library("wordcloud")
 ```
 
@@ -33,7 +34,7 @@ rw_ac_poems <- read_sheet("https://docs.google.com/spreadsheets/d/1aKXxr4WZh0FOC
 ```{r dataClean,echo=FALSE, message=FALSE,warning=FALSE}
 
 acp_cl <- rw_ac_poems
-acp_cl$cl_Time <- sapply(strsplit(na.omit(acp_cl$Time)," "), '[', 1)
+#acp_cl$cl_Time <- sapply(strsplit(na.omit(acp_cl$Time)," "), '[', 1)
 
 # ---------- noun part ----------
 
