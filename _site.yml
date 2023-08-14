@@ -1,0 +1,21 @@
+
+home: "DigitCoral"
+
+navbar:
+  title: "DigitCoral"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Ancient Chinese Poem"
+      href: acp.html
+    - text: "Bible"
+      href: bible.html
+
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    #include:
+     # after_body: footer.html
+
+output_dir: "."
