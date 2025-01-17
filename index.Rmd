@@ -2,9 +2,18 @@
 title: "DigitCoral"
 ---
 
-## **Welcome to the DigitCoral ~**
+## **Welcome to DigitCoral ~**
 
-On-growing Corals are:
+*I collect interesting data and build them into coral reefs*
+
+### **Growing Coral Reefs are:**
 
 - [ ] Ancient Chinese Poems
-- [ ] Bible
+- [ ] Traditional Chinese Medicine
+- [ ] China History Timeline
+- [ ] Chinese Culture
+  - Chinese Food
+  - China POIs
+  - Interesting Terms in Chinese Culture
+- [ ] Bible Chapter & Verses
+- [ ] Biblical History Timeline

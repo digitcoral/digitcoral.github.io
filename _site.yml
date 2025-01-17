@@ -6,10 +6,26 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Ancient Chinese Poem"
-      href: acp.html
+    - text: "Chinese Culture"
+      menu:
+      - text: "Ancient Chinese Poems"
+        href: acp.html
+      - text: "Traditional Chinese Medicine"
+        href: tcm.html
+      - text: "Chinese History"
+        href: ch_history.html
+      - text: "Chinese Foods"
+        href: ch_food.html
+      - text: "Chinese POIs"
+        href: ch_poi.html
+      - text: "Fun Concepts"
+        href: ch_funcon.html
     - text: "Bible"
-      href: bible.html
+      menu:
+      - text: "Chapter & Verses"
+        href: bi_cv.html
+      - text: "Biblical History"
+        href: bi_history.html
 
 output:
   html_document:
