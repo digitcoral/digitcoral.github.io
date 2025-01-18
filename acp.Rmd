@@ -1,19 +1,20 @@
 ---
 title: "Ancient Chinese Poems"
+author: "Shuo Yang"
+date: "1/18/2025"
+output:
+    html_document:
+      self_contained: no
 ---
 
-
----
-
-### **_I collected famous ancient Chinese poems and mark out the nouns, pronouns, verbs, adjectives, adverbs & quantifiers words, then do the exploration, recombination, maybe re-creation..._**
-#### **_我收集了中国古诗词，标出其中的名词、代词、动词、形容词、副词和量词，做了高频词图_**
+------------------------------------------------------------------------
 
 ```{r settings,echo=FALSE,results='hide',fig.keep='all', message=FALSE,warning=FALSE}
 Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
 library(googlesheets4)
-library(dplyr) #<-- for "select" function
 library(RColorBrewer)
-library("wordcloud")
+library(wordcloud)
+library(dplyr) #<-- for "select" function
 ```
 
 ```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
@@ -24,12 +25,18 @@ rw_ac_poems <- read_sheet("https://docs.google.com/spreadsheets/d/1aKXxr4WZh0FOC
 #https://docs.google.com/spreadsheets/d/1aKXxr4WZh0FOCivLzTFdYkcCHaulDlG9jtPpoDEUvo0/edit?usp=sharing
 
 #head(rw_ac_poems)
+p_count <- nrow(rw_ac_poems)
 ```
 
----
+#### ***我收集了约从周朝早期（约1000BC）至近现代新中国（约1949AD)的[`r p_count[1]`]{style="color:red"}首中国古诗词。它们每一首都是文化艺术的瑰宝。在此基础上，我又标出其中的名词、代词、动词、形容词、副词和量词，进行分析，如高频词图等。这些数据也适用于AI学习，或许可以创造新的迷人诗句***
 
-### **_The word cloud of the nouns or pronouns used in ancient Chinese poems_**
-#### **_古诗中的名词、代词的高频词_**
+### ***I have collected [`r p_count[1]`]{style="color:red"} ancient Chinese poems, ranging from early Zhou Dynasty (\~1000BC) to new PRC established (\~1949AD). Each of them is a treasure of culture. Then I marked out the nouns, pronouns, verbs, adjectives, adverbs & quantifiers words, then do the exploration, like the word cloud, etc. The data are also good for AI learning, which may help create new charming poems...***
+
+------------------------------------------------------------------------
+
+### ***The word cloud of the nouns or pronouns used in ancient Chinese poems***
+
+#### ***古诗中的名词、代词的高频词***
 
 ```{r dataClean,echo=FALSE, message=FALSE,warning=FALSE}
 
@@ -62,8 +69,9 @@ wordcloud(words=Noun_freq$Var1,freq=Noun_freq$Freq,min.freq=1,
           colors=brewer.pal(8,'Dark2'))
 ```
 
-### **_The word cloud of the verbs used in ancient Chinese poems_**
-#### **_古诗中的动词的高频词_**
+### ***The word cloud of the verbs used in ancient Chinese poems***
+
+#### ***古诗中的动词的高频词***
 
 ```{r verbPart,echo=FALSE, message=FALSE,warning=FALSE}
 # ----------- verb part -----------
@@ -91,8 +99,9 @@ wordcloud(words=Verb_freq$Var1,freq=Verb_freq$Freq,min.freq=1,
           colors=brewer.pal(8,'Dark2'))
 ```
 
-### **_The word cloud of the adjectives, adverbs used in ancient Chinese poems_**
-#### **_古诗中的形容词、副词的高频词_**
+### ***The word cloud of the adjectives, adverbs used in ancient Chinese poems***
+
+#### ***古诗中的形容词、副词的高频词***
 
 ```{r adjPart,echo=FALSE, message=FALSE,warning=FALSE}
 # ------------ adjective part ------------
@@ -121,8 +130,9 @@ wordcloud(words=Adj_freq$Var1,freq=Adj_freq$Freq,min.freq=1,
 
 ```
 
-### **_The word cloud of the quantifiers used in ancient Chinese poems_**
-#### **_古诗中的量词的高频词_**
+### ***The word cloud of the quantifiers used in ancient Chinese poems***
+
+#### ***古诗中的量词的高频词***
 
 ```{r quantPart,echo=FALSE, message=FALSE,warning=FALSE}
 # ------------ Quantifier part ------------
