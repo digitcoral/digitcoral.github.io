@@ -1,0 +1,28 @@
+---
+title: "Chinese History"
+author: "DigitCoral"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+------------------------------------------------------------------------
+
+```{r settings,echo=FALSE,results='hide',fig.keep='all', message=FALSE,warning=FALSE}
+Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
+library(googlesheets4)
+library(RColorBrewer)
+library(wordcloud)
+library(dplyr) #<-- for "select" function
+```
+
+```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
+
+gs4_deauth() #<--use only for googlesheets shared as 'anyone with the link'
+
+bok_indx <- read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet ="Index")
+
+#head(rw_ac_poems)
+p_count <- nrow(rw_ac_poems)
+```
+
+#### ***我收集了现代标点和合本简体版(CUVMP Simplified)圣经的所有66部书共节经文，以便于查找相关内容和互相引对学习。***

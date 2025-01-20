@@ -1,5 +1,8 @@
 ---
 title: "DigitCoral"
+author: "DigitCoral"
+date: "`r Sys.Date()`"
+output: html_document
 ---
 
 ## **Welcome to DigitCoral ~**
