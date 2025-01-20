@@ -23,7 +23,7 @@ navbar:
     - text: "Bible"
       menu:
       - text: "Chapter & Verses"
-        href: bi_cv.html
+        href: bible_vers.html
       - text: "Biblical History"
         href: bi_history.html
 
