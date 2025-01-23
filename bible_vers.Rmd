@@ -29,6 +29,8 @@ tot_vers <- prettyNum(sum(bok_indx$Total_Verses),big.mark=',',scientific=F)
 
 #### ***我收集了现代标点和合本简体版圣经(CUVMP Simplified)的所有<span style="color:red">66</span>部书共[`r tot_chaps[1]`]{style="color:red"}章，[`r tot_vers[1]`]{style="color:red"}节经文，以便于查找相关内容和互相引对学习。***
 
+------------------------------------------------------------------------
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 
@@ -70,4 +72,76 @@ ui <- fluidPage(
 )
 
 shinyApp(ui=ui, server=server)
+```
+
+------------------------------------------------------------------------
+
+#### 现代标点合和本简体版圣经（CUVMP Simplified）经文及引对
+
+------------------------------------------------------------------------
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+server2 <- function(input, output) {
+
+  # Filter data based on selections
+  output$table <- DT::renderDataTable(DT::datatable({
+
+    data <- bok_indx[,c("Testament","Book","Total_Chapters","Total_Verses")]
+    
+    if (input$testa != "All") {
+      data2 <- data[data$Testament == input$testa,]
+    }
+    if (input$bok != "All") {
+      
+      # read-in book accordingly
+      data2 <- read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet =unlist(strsplit(input$bok,split=" "))[1])
+    }
+    if (input$chap != "All") {
+      data2 <- data2[data2$Chapter == input$chap,]
+    }
+    if (input$vers != "All") {
+      data2 <- data2[data2$Verse == input$vers,]
+    }
+    data2
+  }))
+}
+
+ui2 <- fluidPage(
+  titlePanel("Bible Chapters & Verses Count"),
+
+  # Create a new Row in the UI for selectInputs
+  fluidRow(
+    column(4,
+        selectInput("testa",
+                    "Testament:",
+                    c("All",
+                      unique(as.character(data2$Testament))))
+    ),
+    column(4,
+        selectInput("bok",
+                    "Book:",
+                    c("All",
+                      unique(as.character(data2$Book))))
+    ),
+    column(4,
+        selectInput("chap",
+                    "Chapter:",
+                    c("All",
+                      unique(as.character(data2$Chapter))))
+    ),
+    column(4,
+        selectInput("vers",
+                    "Verse:",
+                    c("All",
+                      unique(as.character(data2$Verse))))
+    )
+  ),
+  # Create a new row for the table.
+  DT::dataTableOutput("table")
+)
+
+shinyApp(ui=ui2, server=server2)
 ```
