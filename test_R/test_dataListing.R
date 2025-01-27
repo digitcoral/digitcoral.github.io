@@ -1,23 +1,12 @@
----
-title: "Chinese History"
-author: "DigitCoral"
-date: "`r Sys.Date()`"
-output: html_document
-runtime: shiny
----
 
-------------------------------------------------------------------------
+#install.packages("googlesheets4")
+#install.packages("ggplot2")
+#install.packages("shiny")
 
-```{r settings,echo=FALSE,results='hide',fig.keep='all', message=FALSE,warning=FALSE}
-Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
 library(googlesheets4)
-library(RColorBrewer)
-library(wordcloud)
-library(dplyr) #<-- for "select" function
+library(dplyr)
 library(shiny)
-```
-
-```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
+library(DT)
 
 gs4_deauth() #<--use only for googlesheets shared as 'anyone with the link'
 
@@ -25,64 +14,10 @@ bok_indx <- read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJ
 
 tot_chaps <- prettyNum(sum(bok_indx$Total_Chapters),big.mark=',',scientific=F)
 tot_vers <- prettyNum(sum(bok_indx$Total_Verses),big.mark=',',scientific=F)
-```
 
-#### ***我收集了现代标点和合本简体版圣经(CUVMP Simplified)的所有<span style="color:red">66</span>部书共[`r tot_chaps[1]`]{style="color:red"}章，[`r tot_vers[1]`]{style="color:red"}节经文，以便于查找相关内容和互相引对学习。***
+#### Global.R part ####
 
-------------------------------------------------------------------------
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(ggplot2)
-
-server <- function(input, output) {
-
-  # Filter data based on selections
-  output$table <- DT::renderDataTable(DT::datatable({
-    data <- bok_indx[,c("Testament","Book","Total_Chapters","Total_Verses")]
-    if (input$testa != "All") {
-      data <- data[data$Testament == input$testa,]
-    }
-    if (input$bok != "All") {
-      data <- data[data$Book == input$bok,]
-    }
-    data[,c("Book","Total_Chapters","Total_Verses")]
-  }))
-}
-
-ui <- fluidPage(
-  titlePanel("Bible Chapters & Verses Count"),
-
-  # Create a new Row in the UI for selectInputs
-  fluidRow(
-    column(6,
-        selectInput("testa",
-                    "Testament:",
-                    c("All",
-                      unique(as.character(bok_indx$Testament))))
-    ),
-    column(6,
-        selectInput("bok",
-                    "Book:",
-                    c("All",
-                      unique(as.character(bok_indx$Book))))
-    )
-  ),
-  # Create a new row for the table.
-  DT::dataTableOutput("table")
-)
-
-shinyApp(ui=ui, server=server)
-```
-
-------------------------------------------------------------------------
-
-#### ***现代标点合和本简体版圣经（CUVMP Simplified）经文及引对***
-
-------------------------------------------------------------------------
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-
-books <<- list("01-创世记 | Genesis"             = "01-创世记",
+books <- list("01-创世记 | Genesis"             = "01-创世记",
                "02-出埃及记 | Exodus"            = "02-出埃及记",
                "03-利未记 | Leviticus"           = "03-利未记",
                "04-民数记 | Numbers"             = "04-民数记",
@@ -156,6 +91,8 @@ server2 <- function(input, output,session) {
     read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet = input$bok)
        })
   
+#        max_chap <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Total_Chapters)
+#        max_vers <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Verse_Max)
 
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
@@ -185,12 +122,12 @@ ui2 <- fluidPage(
     column(4,
            selectInput("chap",
                        "Chapter:",
-                       c("All",1:150))
+                       c("All",1:50))
     ),
     column(4,
            selectInput("vers",
                        "Verse:",
-                       c("All",1:200))
+                       c("All",1:67))
     )
   ),
   # Create a new row for the table.
@@ -198,5 +135,3 @@ ui2 <- fluidPage(
 )
 
 shinyApp(ui=ui2, server=server2)
-
-```
