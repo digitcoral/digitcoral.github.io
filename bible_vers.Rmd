@@ -73,7 +73,7 @@ ui = fluidPage(
   DT::dataTableOutput("table")
 ),
 
-options = list(height=500)
+options = list(height=300)
 
 )
 

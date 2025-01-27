@@ -110,7 +110,7 @@ server2 <- function(input, output,session) {
 }
 
 ui2 <- fluidPage(
-  titlePanel("Bible Chapters & Verses Count"),
+  titlePanel("圣经章节引对-Bible Chapters Verses Ref"),
   
   # Create a new Row in the UI for selectInputs
   fluidRow(
