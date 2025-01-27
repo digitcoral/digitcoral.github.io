@@ -1,5 +1,5 @@
 ---
-title: "Chinese History"
+title: "Bible Chapter & Verses"
 author: "DigitCoral"
 date: "`r Sys.Date()`"
 output: html_document
@@ -76,7 +76,7 @@ ui = fluidPage(
 options = list(height=500)
 
 )
-#shinyApp(ui=ui, server=server)
+
 ```
 
 ------------------------------------------------------------------------
@@ -178,7 +178,7 @@ server2 <- function(input, output,session) {
 }
 
 ui2 <- fluidPage(
-  titlePanel("Bible Chapters & Verses Count"),
+  titlePanel("Bible Chapters & Verses"),
   
   # Create a new Row in the UI for selectInputs
   fluidRow(
