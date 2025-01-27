@@ -34,7 +34,9 @@ tot_vers <- prettyNum(sum(bok_indx$Total_Verses),big.mark=',',scientific=F)
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 
-server <- function(input, output) {
+shinyApp(
+  
+server = function(input, output) {
 
   # Filter data based on selections
   output$table <- DT::renderDataTable(DT::datatable({
@@ -47,9 +49,9 @@ server <- function(input, output) {
     }
     data[,c("Book","Total_Chapters","Total_Verses")]
   }))
-}
+},
 
-ui <- fluidPage(
+ui = fluidPage(
   titlePanel("Bible Chapters & Verses Count"),
 
   # Create a new Row in the UI for selectInputs
@@ -69,9 +71,12 @@ ui <- fluidPage(
   ),
   # Create a new row for the table.
   DT::dataTableOutput("table")
-)
+),
 
-shinyApp(ui=ui, server=server)
+options = list(height=500)
+
+)
+#shinyApp(ui=ui, server=server)
 ```
 
 ------------------------------------------------------------------------
