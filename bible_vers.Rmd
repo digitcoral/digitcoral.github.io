@@ -15,6 +15,7 @@ library(RColorBrewer)
 library(wordcloud)
 library(dplyr) #<-- for "select" function
 library(shiny)
+library(shinylive)
 ```
 
 ```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}

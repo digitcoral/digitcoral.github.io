@@ -11,12 +11,12 @@ output: html_document
 
 ### **Growing Coral Reefs are:**
 
-- [ ] Ancient Chinese Poems
+- [X] Ancient Chinese Poems
 - [ ] Traditional Chinese Medicine
 - [ ] China History Timeline
 - [ ] Chinese Culture
   - Chinese Food
   - China POIs
   - Interesting Terms in Chinese Culture
-- [ ] Bible Chapter & Verses
+- [X] Bible Chapter & Verses
 - [ ] Biblical History Timeline

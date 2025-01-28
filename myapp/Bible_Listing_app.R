@@ -2,11 +2,14 @@
 #install.packages("googlesheets4")
 #install.packages("ggplot2")
 #install.packages("shiny")
+install.packages("shinylive","httpuv")
 
 library(googlesheets4)
 library(dplyr)
 library(shiny)
 library(DT)
+library(rsconnect)
+library(shinylive)
 
 gs4_deauth() #<--use only for googlesheets shared as 'anyone with the link'
 
@@ -84,54 +87,57 @@ books <- list("01-创世记 | Genesis"             = "01-创世记",
                "65-犹大书 | Jude"                         = "65-犹大书",
                "66-启示录 | Revelation"                   = "66-启示录"
                )
-
-server2 <- function(input, output,session) {
-
-  data2 <- reactive({
-    read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet = input$bok)
-       })
+shinyApp(
   
-#        max_chap <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Total_Chapters)
-#        max_vers <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Verse_Max)
-
-  # Filter data based on selections
-  output$table <- DT::renderDataTable(DT::datatable({
-    
-    data3 <- data2()
-    
-    if (input$chap != "All") {
-      data3 <- data3[data3$Chapter == input$chap,]
-    }
-    if (input$vers != "All") {
-      data3 <- data3[data3$Verse == input$vers,]
-    }
-    data3
-  }))
-}
-
-ui2 <- fluidPage(
-  titlePanel("圣经章节引对-Bible Chapters Verses Ref"),
+  server = function(input, output,session) {
   
-  # Create a new Row in the UI for selectInputs
-  fluidRow(
-    column(4,
-           selectInput("bok",
-                       "Book:",
-                       books)
+    data2 <- reactive({
+      read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet = input$bok)
+         })
+    
+  #        max_chap <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Total_Chapters)
+  #        max_vers <- as.numeric(bok_indx[bok_indx$BookTab==input$bok,]$Verse_Max)
+  
+    # Filter data based on selections
+    output$table <- DT::renderDataTable(DT::datatable({
+      
+      data3 <- data2()
+      
+      if (input$chap != "All") {
+        data3 <- data3[data3$Chapter == input$chap,]
+      }
+      if (input$vers != "All") {
+        data3 <- data3[data3$Verse == input$vers,]
+      }
+      data3
+    }))
+  },
+  
+  ui = fluidPage(
+    titlePanel("圣经章节引对-Bible Chapters Verses Ref"),
+    
+    # Create a new Row in the UI for selectInputs
+    fluidRow(
+      column(4,
+             selectInput("bok",
+                         "Book:",
+                         books)
+      ),
+      column(4,
+             selectInput("chap",
+                         "Chapter:",
+                         c("All",1:50))
+      ),
+      column(4,
+             selectInput("vers",
+                         "Verse:",
+                         c("All",1:67))
+      )
     ),
-    column(4,
-           selectInput("chap",
-                       "Chapter:",
-                       c("All",1:50))
-    ),
-    column(4,
-           selectInput("vers",
-                       "Verse:",
-                       c("All",1:67))
-    )
-  ),
-  # Create a new row for the table.
-  DT::dataTableOutput("table")
+    # Create a new row for the table.
+    DT::dataTableOutput("table")
+  )
 )
 
-shinyApp(ui=ui2, server=server2)
+library(rsconnect)
+rsconnect::deployApp('C:/Users/Sean/Documents/GitHub/digitcoral.github.io')
