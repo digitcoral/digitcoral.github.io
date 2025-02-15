@@ -3,7 +3,6 @@ title: "Bible Chapter & Verses"
 author: "DigitCoral"
 date: "`r Sys.Date()`"
 output: html_document
-runtime: shiny
 ---
 
 ------------------------------------------------------------------------
@@ -16,7 +15,6 @@ library(wordcloud)
 library(dplyr) #<-- for "select" function
 library(shiny)
 library(shinylive)
-library(knitr)
 ```
 
 ```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
@@ -29,55 +27,15 @@ tot_chaps <- prettyNum(sum(bok_indx$Total_Chapters),big.mark=',',scientific=F)
 tot_vers <- prettyNum(sum(bok_indx$Total_Verses),big.mark=',',scientific=F)
 ```
 
+------------------------------------------------------------------------
+
 #### ***我收集了现代标点和合本简体版圣经(CUVMP Simplified)的所有<span style="color:red">66</span>部书共[`r tot_chaps[1]`]{style="color:red"}章，[`r tot_vers[1]`]{style="color:red"}节经文，以便于查找相关内容和互相引对学习。***
 
 ------------------------------------------------------------------------
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(ggplot2)
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
-shinyApp(
-  
-server = function(input, output) {
-
-  # Filter data based on selections
-  output$table <- DT::renderDataTable(DT::datatable({
-    data <- bok_indx[,c("Testament","Book","Total_Chapters","Total_Verses")]
-    if (input$testa != "All") {
-      data <- data[data$Testament == input$testa,]
-    }
-    if (input$bok != "All") {
-      data <- data[data$Book == input$bok,]
-    }
-    data[,c("Book","Total_Chapters","Total_Verses")]
-  }))
-},
-
-ui = fluidPage(
-  titlePanel("Bible Chapters & Verses Count"),
-
-  # Create a new Row in the UI for selectInputs
-  fluidRow(
-    column(6,
-        selectInput("testa",
-                    "Testament:",
-                    c("All",
-                      unique(as.character(bok_indx$Testament))))
-    ),
-    column(6,
-        selectInput("bok",
-                    "Book:",
-                    c("All",
-                      unique(as.character(bok_indx$Book))))
-    )
-  ),
-  # Create a new row for the table.
-  DT::dataTableOutput("table")
-),
-
-options = list(height=300)
-
-)
+knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_count_app", height="700px")
 
 ```
 
@@ -87,8 +45,8 @@ options = list(height=300)
 
 ------------------------------------------------------------------------
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
-knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_list_app", width="100%", height="700px")
+knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_list_app", height="700px")
 
 ```
