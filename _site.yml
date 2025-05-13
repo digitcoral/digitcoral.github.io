@@ -10,22 +10,22 @@ navbar:
       menu:
       - text: "Ancient Chinese Poems"
         href: acp.html
-      - text: "Traditional Chinese Medicine"
-        href: tcm.html
-      - text: "Chinese History"
-        href: ch_history.html
-      - text: "Chinese Foods"
-        href: ch_food.html
-      - text: "Chinese POIs"
-        href: ch_poi.html
-      - text: "Fun Concepts"
-        href: ch_funcon.html
+#      - text: "Traditional Chinese Medicine"
+#        href: tcm.html
+#      - text: "Chinese History"
+#        href: ch_history.html
+#      - text: "Chinese Foods"
+#        href: ch_food.html
+#      - text: "Chinese POIs"
+#        href: ch_poi.html
+#      - text: "Fun Concepts"
+#        href: ch_funcon.html
     - text: "Bible"
       menu:
       - text: "Chapter & Verses"
         href: bible_vers.html
-      - text: "Biblical History"
-        href: bi_history.html
+#     - text: "Biblical History"
+#       href: bi_history.html
 
 output:
   html_document:
