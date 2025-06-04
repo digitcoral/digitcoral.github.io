@@ -47,6 +47,6 @@ knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_count_app", heig
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
 
-knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_list_app", height="700px")
+#knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_list_app", height="700px")
 
 ```
