@@ -10,36 +10,22 @@ navbar:
       menu:
       - text: "Ancient Chinese Poems"
         href: acp.html
-      - text: "Traditional Chinese Medicine"
-        href: tcm.html
-      - text: "Chinese History"
-        href: ch_history.html
-      - text: "Chinese Foods"
-        href: ch_food.html
-      - text: "Chinese POIs"
-        href: ch_poi.html
-      - text: "Fun Concepts"
-        href: ch_funcon.html
+#      - text: "Traditional Chinese Medicine"
+#        href: tcm.html
+#      - text: "Chinese History"
+#        href: ch_history.html
+#      - text: "Chinese Foods"
+#        href: ch_food.html
+#      - text: "Chinese POIs"
+#        href: ch_poi.html
+#      - text: "Fun Concepts"
+#        href: ch_funcon.html
     - text: "Bible"
       menu:
       - text: "Chapter & Verses"
-        href: bi_cv.html
-      - text: "Biblical History"
-        href: bi_history.html
-    - text: "Maths"
-      menu:
-      - text: "Math"
-        href: math.html
-      - text: "Statistics"
-        href: stats.html
-    - text: "NeuroScience"
-      menu:
-      - text: "Brain Anatomy"
-        href: brainAnatomy.html
-      - text: "Functional Regions"
-        href: funcRegion.html
-      - text: "Psychology"
-        href: Psy.html
+        href: bible_vers.html
+#     - text: "Biblical History"
+#       href: bi_history.html
 
 output:
   html_document:

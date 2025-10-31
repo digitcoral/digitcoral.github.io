@@ -1,5 +1,8 @@
 ---
 title: "DigitCoral"
+author: "DigitCoral"
+date: "`r Sys.Date()`"
+output: html_document
 ---
 
 ## **Welcome to DigitCoral ~**
@@ -8,12 +11,12 @@ title: "DigitCoral"
 
 ### **Growing Coral Reefs are:**
 
-- [ ] Ancient Chinese Poems
+- [X] Ancient Chinese Poems
 - [ ] Traditional Chinese Medicine
 - [ ] China History Timeline
 - [ ] Chinese Culture
   - Chinese Food
   - China POIs
   - Interesting Terms in Chinese Culture
-- [ ] Bible Chapter & Verses
+- [X] Bible Chapter & Verses
 - [ ] Biblical History Timeline

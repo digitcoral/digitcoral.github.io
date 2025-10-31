@@ -1,0 +1,52 @@
+---
+title: "Bible Chapter & Verses"
+author: "DigitCoral"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+------------------------------------------------------------------------
+
+```{r settings,echo=FALSE,results='hide',fig.keep='all', message=FALSE,warning=FALSE}
+Sys.setlocale("LC_ALL","Chinese") #<--set for showing Chinese 
+library(googlesheets4)
+library(RColorBrewer)
+library(wordcloud)
+library(dplyr) #<-- for "select" function
+library(shiny)
+library(shinylive)
+```
+
+```{r gshets,echo=FALSE, message=FALSE,warning=FALSE}
+
+gs4_deauth() #<--use only for googlesheets shared as 'anyone with the link'
+
+bok_indx <- read_sheet("https://docs.google.com/spreadsheets/d/1RDLRFS7o2lSLsIRJAjd-cVXQDt_Q1XiDxIQ_ZC6_VDs/edit?usp=sharing", sheet ="Index")
+
+tot_chaps <- prettyNum(sum(bok_indx$Total_Chapters),big.mark=',',scientific=F)
+tot_vers <- prettyNum(sum(bok_indx$Total_Verses),big.mark=',',scientific=F)
+```
+
+------------------------------------------------------------------------
+
+#### ***我收集了现代标点和合本简体版圣经(CUVMP Simplified)的所有<span style="color:red">66</span>部书共[`r tot_chaps[1]`]{style="color:red"}章，[`r tot_vers[1]`]{style="color:red"}节经文，以便于查找相关内容和互相引对学习。***
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+
+knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_count_app", height="700px")
+
+```
+
+------------------------------------------------------------------------
+
+#### ***现代标点合和本简体版圣经（CUVMP Simplified）经文及引对***
+
+------------------------------------------------------------------------
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+
+#knitr::include_app("https://digitcoral.shinyapps.io/bible_verse_list_app", height="700px")
+
+```
