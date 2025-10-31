@@ -26,6 +26,20 @@ navbar:
         href: bi_cv.html
       - text: "Biblical History"
         href: bi_history.html
+    - text: "Maths"
+      menu:
+      - text: "Math"
+        href: math.html
+      - text: "Statistics"
+        href: stats.html
+    - text: "NeuroScience"
+      menu:
+      - text: "Brain Anatomy"
+        href: brainAnatomy.html
+      - text: "Functional Regions"
+        href: funcRegion.html
+      - text: "Psychology"
+        href: Psy.html
 
 output:
   html_document:
