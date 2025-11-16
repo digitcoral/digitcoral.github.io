@@ -9,17 +9,18 @@ navbar:
     - text: "Bible"
       menu:
       - text: "Chapter & Verses"
-        href: bible_vers.html
-      - text: "Biblical History"
-        href: bi_history.html
-    - text: "Math & Statistics"
+        href: bible_vers.html 
+#      - text: "Biblical History"
+#        href: bi_history.html
+    - text: "Maths & Statistics"
       menu:
       - text: "Statistics"
         href: stats.html
     - text: "Chinese Culture"
       menu:
       - text: "Ancient Chinese Poems"
-        href: acp.html
+        href: acp.html 
+        
 #      - text: "Traditional Chinese Medicine"
 #        href: tcm.html
 #      - text: "Chinese History"
