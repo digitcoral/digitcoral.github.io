@@ -10,8 +10,8 @@ navbar:
       menu:
       - text: "Chapter & Verses"
         href: bible_vers.html
-#     - text: "Biblical History"
-#       href: bi_history.html
+      - text: "Biblical History"
+        href: bi_history.html
     - text: "Math & Statistics"
       menu:
       - text: "Statistics"
