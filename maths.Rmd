@@ -1,0 +1,14 @@
+---
+title: "Math Knowledge Chart"
+author: "DigitCoral"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+#### ***This is an idea on how to connect the maths knowledges together for my son***
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width="100%"}
+
+knitr::include_app(" https://young-shore.shinyapps.io/math_rela_chart", height="700px")
+
+```

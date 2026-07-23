@@ -1,0 +1,13 @@
+name: math_rela_chart
+title: math_rela_chart
+username: young-shore
+account: young-shore
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17636396
+bundleId: 12311570
+url: https://young-shore.shinyapps.io/math_rela_chart/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Bible_Listing_app.R|test_wordcloud.R

@@ -14,6 +14,8 @@ navbar:
 #        href: bi_history.html
     - text: "Maths & Statistics"
       menu:
+      - text: "Maths"
+        href: maths.html
       - text: "Statistics"
         href: stats.html
     - text: "Chinese Culture"
