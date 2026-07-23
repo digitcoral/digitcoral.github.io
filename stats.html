@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="DigitCoral" />
+<meta name="author" content="Sean Young" />
 
-<meta name="date" content="2025-11-15" />
+<meta name="date" content="2025-10-24" />
 
-<title>DigitCoral</title>
+<title>Statistics</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -31,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,6 +224,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -228,6 +300,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -295,37 +377,90 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">DigitCoral</h1>
-<h4 class="author">DigitCoral</h4>
-<h4 class="date">2025-11-15</h4>
+<h1 class="title toc-ignore">Statistics</h1>
+<h4 class="author">Sean Young</h4>
+<h4 class="date">2025-10-24</h4>
 
 </div>
 
 
-<div id="welcome-to-digitcoral" class="section level2">
-<h2><strong>Welcome to DigitCoral ~</strong></h2>
-<p><em>I collect interesting data and build them into coral
-reefs</em></p>
-<div id="growing-coral-reefs-are" class="section level3">
-<h3><strong>Growing Coral Reefs are:</strong></h3>
-<ul class="task-list">
-<li><input type="checkbox" checked="" />Ancient Chinese Poems</li>
-<li><input type="checkbox" />Traditional Chinese Medicine</li>
-<li><input type="checkbox" />China History Timeline</li>
-<li><input type="checkbox" />Chinese Culture
-<ul>
-<li>Chinese Food</li>
-<li>China POIs</li>
-<li>Interesting Terms in Chinese Culture</li>
-</ul></li>
-<li><input type="checkbox" checked="" />Bible Chapter &amp; Verses</li>
-<li><input type="checkbox" />Biblical History Timeline</li>
-</ul>
+<hr />
+<div id="discrete-distributions" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Discrete
+Distributions</h1>
+<div id="bernoulli" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Bernoulli</h2>
+<p>Probability Mass Function(PMF):</p>
+<p>Cumulative Distribution Function(CDF):</p>
+</div>
+<div id="binomialnegative-binomial" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Binomial/Negative
+Binomial</h2>
+</div>
+<div id="poisson" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Poisson</h2>
+</div>
+<div id="geometric" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Geometric</h2>
+<hr />
+</div>
+</div>
+<div id="continuous-distribution" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Continuous
+Distribution</h1>
+<p>Probability Density Function(PDF):</p>
+<div id="normalgaussian" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Normal(Gaussian)</h2>
+<p>The normal distribution PDF:</p>
+<p><span class="math display">\[
+f(x \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}
+\exp\!\left( -\,\frac{(x - \mu)^2}{2\sigma^2} \right)
+\]</span></p>
+<div id="students-t" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Student’s t</h3>
+</div>
+</div>
+<div id="beta" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Beta</h2>
+</div>
+<div id="gamma" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Gamma</h2>
+<div id="chi-square" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Chi-Square</h3>
+</div>
+</div>
+<div id="weibull" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Weibull</h2>
+</div>
+<div id="exponential" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Exponential</h2>
+<hr />
+</div>
+</div>
+<div id="statistical-tests" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Statistical Tests</h1>
+<pre class="r"><code>summary(cars)</code></pre>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="including-plots" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<p><img src="stats_files/figure-html/pressure-1.png" width="672" /></p>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the
+code chunk to prevent printing of the R code that generated the
+plot.</p>
 </div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -358,6 +493,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

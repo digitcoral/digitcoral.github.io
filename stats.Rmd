@@ -1,0 +1,79 @@
+---
+title: "Statistics"
+author: "Sean Young"
+date: "2025-10-24"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+# Discrete Distributions
+
+## Bernoulli 
+
+Probability Mass Function(PMF):
+
+Cumulative Distribution Function(CDF):
+
+## Binomial/Negative Binomial
+
+## Poisson
+
+## Geometric
+
+---
+
+# Continuous Distribution
+
+Probability Density Function(PDF):
+
+## Normal(Gaussian)
+
+The normal distribution PDF:
+
+$$
+f(x \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}
+\exp\!\left( -\,\frac{(x - \mu)^2}{2\sigma^2} \right)
+$$
+
+
+### Student's t
+
+## Beta
+
+## Gamma
+
+### Chi-Square
+
+## Weibull
+
+## Exponential 
+
+---
+
+# Statistical Tests
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
