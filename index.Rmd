@@ -20,3 +20,4 @@ output: html_document
   - Interesting Terms in Chinese Culture
 - [X] Bible Chapter & Verses
 - [ ] Biblical History Timeline
+- [X] Maths Concepts
